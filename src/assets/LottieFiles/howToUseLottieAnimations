@@ -1,0 +1,12 @@
+Visit the website [https://www.npmjs.com/package/lottie-react].
+Install lottie-react [npm i lottie-react].
+
+Visit the website [lottiefiles.com] and choose a free animation.
+Download the animation in [Lottie JSON] format.
+Save the file into the project folder ideally in this location [src/assets/LottieFiles].
+
+Import this inside the component [import Lottie from "lottie-react";].
+Import the saved animation inside the component [import registrationLottieAnimationData from "../../assets/LottieFiles/Registration/Animation - 1733835255243.json";]
+And then use it inside the return code snippet, like that [<Lottie animationData={registrationLottieAnimationData} loop={true} className={'w-20'}></Lottie>].
+
+And then read this document to learn the different way of usages in the component [https://www.npmjs.com/package/lottie-react].

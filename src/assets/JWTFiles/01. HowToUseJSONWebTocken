@@ -1,0 +1,45 @@
+Visit the website [https://jwt.io/libraries?language=Node.js].
+Now go to the server-side project and install JWT library for Node.js [npm i jsonwebtoken].
+Also install [npm i cookie-parser].
+Import this inside the index.js [const jwt = require('jsonwebtoken');].
+Import this inside the index.js [const cookieParser = require('cookie-parser');].
+Set this middleware [app.use(cookieParser());].
+
+
+Now we'll use node module 'crypto', to create a 64 byte random data, and then will convert it to hexadecimal string.
+Open up the terminal and write this code [require('crypto').randomBytes(64).toString('hex')] and press enter.
+b8aede5cfcb469e511922bddb23fb6344e4c97a7271f5f8cbd9c0ec257fb063eecaf1c027ea71fb46be2568dbd960dde035a40aea0fe1beb0960e1318a61f1d1
+This kind of a key will be generated, which we'll save into the .env file as shown below.
+JWT_SECRET=b8aede5cfcb469e511922bddb23fb6344e4c97a7271f5f8cbd9c0ec257fb063eecaf1c027ea71fb46be2568dbd960dde035a40aea0fe1beb0960e1318a61f1d1
+
+
+On the server side, update this middleware.
+app.use(cors({
+    origin: ['http://localhost:3000'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+})) //From CORS Middleware
+
+
+Now on the server side, we'll create API like that:
+app.post('/auth/jwt', async (req, res) => {
+    //Generating JSON Web Token.
+    const token = jwt.sign({data: req.body}, process.env.JWT_SECRET, { expiresIn: '1h' });
+    //Setting JWT in the HTTP only cookie.
+    res.cookie('token', token, {
+        httpOnly: true,         //Cookies access restricted from client side.
+        secure: false,          //Set false while in dev environment, and true while in production.
+        sameSite: 'strict',     //Protection from CSRF.
+        domain: 'localhost',    //Set localhost while in dev environment, and real domain while in production.
+        maxAge: 3600000,        //Token validity.
+        expires: new Date(Date.now() + 3600000),
+    }).status(201).send({success: true, message: "Login Successful, JWT stored in Cookie!"});
+})
+
+
+Now on the client side, we'll call this API, to request JWT, like that:
+/* REQUESTING JSON WEB TOKEN THROUGH API */
+await axios.post(`${BASE_URL}/auth/jwt`, {email: userCredential?.user?.email}, {withCredentials: true})
+.then(response => {
+    console.log(`JSON Web Token: `, response.data);
+})

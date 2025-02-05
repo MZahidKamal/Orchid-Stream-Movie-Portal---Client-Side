@@ -1,0 +1,5 @@
+Visit the website [https://motion.dev/docs/quick-start].
+Install lottie-react [npm install motion].
+Import this inside the component [import { motion } from "motion/react"].
+And then read this document to learn the different way of usages in the component [https://motion.dev/docs/react-quick-start].
+Also learn useAnimate hook [https://motion.dev/docs/react-use-animate].

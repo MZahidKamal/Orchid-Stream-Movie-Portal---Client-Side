@@ -1,0 +1,7 @@
+.rating-container > div {
+    display: inline-flex !important; /* Forces horizontal layout */
+    gap: 5px; /* Adds spacing between stars, adjust as needed */
+}
+.rating-container svg {
+    display: inline !important;
+}
