@@ -1,3 +1,8 @@
+<div align="center">
+  <img src="https://res.cloudinary.com/dxh2iyxjs/image/upload/v1738950625/OrchidStream_Movie_Portal_oijfwx.jpg"  />
+</div>
+
+
 # 🎬 OrchidStream Movie Portal  
 
 🌟 **OrchidStream** is a user-friendly **Movie Portal** designed to simplify the process of exploring, managing, and enjoying movies. Users can browse movie listings, view detailed information, manage their favorites, and create watch lists.  
