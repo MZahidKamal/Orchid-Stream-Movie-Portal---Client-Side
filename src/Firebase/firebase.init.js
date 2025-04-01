@@ -26,4 +26,4 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 export default auth;
 
-// Firebase installation completed.
+// Firebase installation completed. And the updated.
